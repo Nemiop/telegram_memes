@@ -1,15 +1,17 @@
+# Use dynamic changing Ip and Useragent
+
 import requests
 from bs4 import BeautifulSoup
 
 from random import choice
 from time import sleep
 
-def get_html(url, useragent=None, proxy=None):
-    r = requests.get(url, headers=useragent, proxies=proxy)
+def get_html(url, parameters, useragent=None, proxy=None):
+    r = requests.get(url, params=parameters, headers=useragent, proxies=proxy)
     return r
 
 
-def get_html_proxy(url):
+def get_html_proxy(url, parameters):
 
     # Proxy - change ip and user-agent
     # Govnokod: Last element is ' ', so I delete it
@@ -22,14 +24,12 @@ def get_html_proxy(url):
 
     for i in range(10):
 #        sleep(uniform(3,6))                                 # Delay 'antiban'. Isn't needed if multi-ip
-        proxy = {'http': 'http://' + choice(proxies)}
+        proxy = {'https':  choice(proxies)}
         useragent = {'User-Agent': choice(useragents)}
         try:
-            html = get_html(url, useragent, proxy)
+            html = get_html(url, parameters, useragent, proxy)
         except:
             continue
-
-
         return html
 
 
