@@ -29,4 +29,4 @@ def get_html_proxy(url, parameters):
             html = get_html(url, parameters, useragent, proxy)
         except:
             continue
-        return html
+        else: return html
