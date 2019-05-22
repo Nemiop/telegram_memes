@@ -1,7 +1,7 @@
 import telebot
 import vk_parser as vp
 
-bot = telebot.TeleBot("870053741:AAEjGB6ozZDZKT8Rs9yj1X9ZX-Ls0tETnkg")
+bot = telebot.TeleBot("*************************************")
 path_csv = "vk_mhk.csv"
 
 @bot.message_handler(content_types=['text'])
